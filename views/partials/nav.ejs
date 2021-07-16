@@ -4,9 +4,15 @@
 </head>
 <body>
   <nav>
+    <i class="fas fa-dragon">BG-CLUB</i>
+    <a href="/">HOME</a>
+    <a href="/boardGames">ALL BG</a>
+    <a href="/boardGames/top">TOP</a>
+    <a href="/favorite">FAVORITE</a>
+    <a href="/history">HISTORY</a> 
     <% if (user) { %>
       <a href="/auth/logout">
-        <button type="submit">Logout</button>
+        <button type="submit" class="fas fa-sign-out-alt">Logout</button>
       </a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">
