@@ -8,6 +8,6 @@ export {
 
 const router = Router()
 
-// router.get('/', boardGamesCtrl.index)
+
 router.get('/top', boardGamesCtrl.topBoardGames)
 router.get('/:id', boardGamesCtrl.details)

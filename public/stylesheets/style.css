@@ -99,3 +99,9 @@ h1 {
 .description-newline {
   white-space: pre-line;
 }
+
+.game-img {
+  width:  800px;
+  height: 700px;
+  object-fit: scale-down;
+}

@@ -9,7 +9,12 @@
             <span><%= designer.$.value %>, </span>
         <% }); %> 
     </p>
-    <img src=" <%= image %> ">
+    <p> Categories: 
+        <% categories.forEach(category => { %>
+            <span>#<%= category.$.value %> </span>
+        <% }); %> 
+    </p>
+    <img class="game-img" src=" <%= image %> ">
     <p class='description-newline'><%= description %> </p>
 
 </main>

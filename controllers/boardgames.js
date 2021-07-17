@@ -39,6 +39,7 @@ function details(req, res) {
                         'description' : game.description[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),
                         'yearpublished' : game.yearpublished[0].$.value,
                         'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
+                        'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
                     }
                 )
             } else {
