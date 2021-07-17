@@ -1,0 +1,17 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    <h1> <%= name %> </h1>
+    <p>Published In : <%= yearpublished %> </p>
+    <p> Designers: 
+        <% designers.forEach(designer => { %>
+            <span><%= designer.$.value %>, </span>
+        <% }); %> 
+    </p>
+    <img src=" <%= image %> ">
+    <p class='description-newline'><%= description %> </p>
+
+</main>
+
+<%- include('../partials/footer') %>

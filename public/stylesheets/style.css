@@ -95,3 +95,7 @@ body > main h1:first-child {
 h1 {
   font-size: 3.6rem;
 }
+
+.description-newline {
+  white-space: pre-line;
+}
