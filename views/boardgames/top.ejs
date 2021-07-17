@@ -10,6 +10,7 @@
                     <td>
                         <h2> <%= idx + 1 %> : <%= game.name[0].$.value %></h2>
                         <img src="<%= game.thumbnail[0].$.value %>">
+                        <a href="/boardgames/<%= game.$.id %>"">Details</a>
                     </td>
                 </tr>
             <% }) %>
