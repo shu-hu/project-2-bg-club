@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    <h1>Top 10 BoardGames</h1>
+    <table>
+        <tbody>
+            <% games.forEach((game, idx) => { %>
+                <tr>
+                    <td>
+                        <h2> <%= idx + 1 %> : <%= game.name[0].$.value %></h2>
+                        <img src="<%= game.thumbnail[0].$.value %>">
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</main>
+
+<%- include('../partials/footer') %>
