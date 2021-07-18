@@ -1,18 +1,25 @@
 import fetch from 'node-fetch'
 import { parseStringPromise } from 'xml2js';
 import { User } from '../models/user.js'
+import { Reviews } from '../models/review.js'
 
 export {
     topBoardGames,
     details,
     showSearch,
+    createReview,
+}
+
+function createReview(req, res) {
+    Reviews.create(req.body, function(err) {
+        res.redirect(`/boardgames/${req.params.id}`)
+    })
 }
 
 async function showSearch(req, res) {
     let searchResult;
     if (req.query.query) {
         searchResult = [];
-        console.log("helloooooooo")
         await fetch(`https://www.boardgamegeek.com/xmlapi2/search?type=boardgame&query=${req.query.query}`)
             .then(response => response.text())
             .then(responsexml => parseStringPromise(responsexml))
@@ -51,7 +58,6 @@ function topBoardGames(req, res) {
     fetch("https://www.boardgamegeek.com/xmlapi2/hot?type=boardgame")
         .then(response => response.text())
         .then(responsexml => parseStringPromise(responsexml))
-        // .then(json => console.log(json.items.item[0]))
         .then(responseJson => res.render('boardgames/top', 
             {
                 'user': null,
@@ -66,9 +72,10 @@ function details(req, res) {
     fetch(`https://www.boardgamegeek.com/xmlapi2/thing?type=boardgame&id=${gameId}`)
         .then(response => response.text())
         .then(responsexml => parseStringPromise(responsexml))
-        .then(responseJson => {
+        .then(async function(responseJson) {
             const game = responseJson.items.item?.[0];
             if (game) {
+                const reviews = await Reviews.find({gameId: gameId}).exec()
                 User.findById(req.user._id, function(err, user) {
                     const gameName = game.name[0].$.value;
                     const gameThumbnail = game.thumbnail[0];
@@ -82,7 +89,7 @@ function details(req, res) {
                     user.save(function(err) {
                         res.render(`boardgames/details`, 
                             {
-                                'user': null,
+                                'user': req.user._id,
                                 'title': 'Details',
                                 'id': gameId, 
                                 'name': gameName,
@@ -91,6 +98,7 @@ function details(req, res) {
                                 'yearpublished' : game.yearpublished[0].$.value,
                                 'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
                                 'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
+                                'reviews' : reviews,
                             }
                         )
                     })
