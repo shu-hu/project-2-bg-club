@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% searchResult.forEach(function(game) { %>
+                        <% searchResult.slice(0, 11).forEach(function(game) { %>
                         <tr>
                             <td><%= game.name %></td>
                             <td><%= game.gamePublished %></td>
