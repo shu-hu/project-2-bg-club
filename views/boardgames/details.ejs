@@ -3,7 +3,10 @@
 
 <main>
     <h1> <%= name %> </h1>
-    <form action="/favorite" mathod="POST">
+    <form action="/favorite" method="POST">
+        <input id="fav-gameId" name="gameId" type="number" hidden value="<%= id %>">
+        <input id="fav-gameName" name="gameName" type="text" hidden value="<%= name %>">
+        <input id="fav-gameImg" name="gameImg" type="text" hidden value="<%= image %>">
         <button type="submit"><i class="fas fa-heart fa-2x"></i></button>
     </form>
     <p>Published In : <%= yearpublished %> </p>

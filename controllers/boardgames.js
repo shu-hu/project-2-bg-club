@@ -83,7 +83,8 @@ function details(req, res) {
                         res.render(`boardgames/details`, 
                             {
                                 'user': null,
-                                'title': 'Details', 
+                                'title': 'Details',
+                                'id': gameId, 
                                 'name': gameName,
                                 'image' : gameImg,
                                 'description' : game.description[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),

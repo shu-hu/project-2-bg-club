@@ -7,3 +7,5 @@ export {
 }
 
 const router = Router()
+
+router.post('/', isLoggedIn, myGamesCtrl.create)
