@@ -9,6 +9,6 @@ export {
 const router = Router()
 
 
-router.get('/top', boardGamesCtrl.topBoardGames)
-router.get('/:id', boardGamesCtrl.details)
-router.get('/search', boardGamesCtrl.showSearch)
+router.get('/top', isLoggedIn, boardGamesCtrl.topBoardGames)
+router.get('/search', isLoggedIn, boardGamesCtrl.showSearch)
+router.get('/:id', isLoggedIn, boardGamesCtrl.details)

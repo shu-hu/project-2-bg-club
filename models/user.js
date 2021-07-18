@@ -8,8 +8,7 @@ const historySchema = new mongoose.Schema(
   {
     name: String,
     image: String,
-    id: Number,
-    time: Date,
+    gameId: {type: Number, unique: true},
   },{
     timestamps: true,
   }

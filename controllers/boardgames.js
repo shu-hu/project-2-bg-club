@@ -1,5 +1,6 @@
 import fetch from 'node-fetch'
 import { parseStringPromise } from 'xml2js';
+import { User } from '../models/user.js'
 
 export {
     topBoardGames,
@@ -7,8 +8,43 @@ export {
     showSearch,
 }
 
-function showSearch(req, res) {
-    console.log('work!!!!')
+async function showSearch(req, res) {
+    let searchResult;
+    if (req.query.query) {
+        searchResult = [];
+        console.log("helloooooooo")
+        await fetch(`https://www.boardgamegeek.com/xmlapi2/search?type=boardgame&query=${req.query.query}`)
+            .then(response => response.text())
+            .then(responsexml => parseStringPromise(responsexml))
+            .then(responseJson => {
+                const games = responseJson.items.item;
+                if (games) {
+                    games.forEach(game => {
+                        const gameName = game.name[0].$.value;
+                        const gameId = game.$.id;
+                        const gamePublished = game.yearpublished?.[0].$.value;
+                        searchResult.push(
+                            {
+                                name: gameName,
+                                gameId: gameId,
+                                gamePublished: gamePublished,
+                            }
+                        )
+                    });
+                    
+                } 
+            })
+    }
+    
+    User.findById(req.user._id, function(err, user) {
+        res.render('boardgames/search', {
+            title: 'View History',
+            err: err,
+            history: user.viewsHistory,   
+            searchResult: searchResult,
+            input: req.query.query,
+        })
+    })
 }
 
 function topBoardGames(req, res) {
@@ -33,21 +69,34 @@ function details(req, res) {
         .then(responseJson => {
             const game = responseJson.items.item?.[0];
             if (game) {
-                res.render(`boardgames/details`, 
-                    {
-                        'user': null,
-                        'title': 'Details', 
-                        'name': game.name[0].$.value,
-                        'image' : game.image,
-                        'description' : game.description[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),
-                        'yearpublished' : game.yearpublished[0].$.value,
-                        'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
-                        'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
+                User.findById(req.user._id, function(err, user) {
+                    const gameName = game.name[0].$.value;
+                    const gameThumbnail = game.thumbnail[0];
+                    const gameImg = game.image[0];
+                    const viewHistory = {
+                        name: gameName,
+                        image: gameThumbnail,
+                        gameId: gameId,
                     }
-                )
+                    user.viewsHistory.push(viewHistory)
+                    user.save(function(err) {
+                        res.render(`boardgames/details`, 
+                            {
+                                'user': null,
+                                'title': 'Details', 
+                                'name': gameName,
+                                'image' : gameImg,
+                                'description' : game.description[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),
+                                'yearpublished' : game.yearpublished[0].$.value,
+                                'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
+                                'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
+                            }
+                        )
+                    })
+                })
             } else {
                 console.log('No game detail found');
-                res.redirect('/boardgames/top')
+                res.redirect('back');
             }
         })
 }

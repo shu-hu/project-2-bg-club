@@ -1,0 +1,76 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    
+    <h1> This is search page</h1>
+    <div class="search-container">
+        <form action="/boardgames/search" method="GET">
+            <input id="search-input" type="text" placeholder="Search..." name="query">
+            <button id="search-btn" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <section>
+        <% if(input) { %> 
+            <% if(searchResult) { %>
+                <h3>Search Result</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Published Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% searchResult.forEach(function(game) { %>
+                        <tr>
+                            <td><%= game.name %></td>
+                            <td><%= game.gamePublished %></td>
+                            <% if (game.gameId) { %> 
+                                <td><a href="/boardgames/<%= game.gameId %>">DETAILS</a></td>
+                            <% } %> 
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <h3>Your search - <%= input %>  - did not match any documents.</h3>
+                <ul>
+                    Suggestions:
+                    <li>Make sure all words are spelled correctly.</li>
+                    <li>Try different keywords.</li>
+                    <li>Try more general keywords.</li>
+                </ul>
+            <% } %>
+        <% } %>   
+    </section>
+    <h2>Viewing History</h2>
+    <% if (history?.length) { %>
+        <table>
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% history.forEach(function(viewed) { %>
+            <tr>
+                <td><%= viewed.name %></td>
+                <td><img src="<%= viewed.image %>"></td>
+                <td><%= viewed.createdAt.toLocaleString() %></td>
+                <td>
+
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+        </table>
+    <% } else { %>
+        <h3>Your have not viewed any boardGame yet</h3>
+    <% } %>
+
+</main>
+
+<%- include('../partials/footer') %>
