@@ -11,3 +11,4 @@ const router = Router()
 
 router.get('/top', boardGamesCtrl.topBoardGames)
 router.get('/:id', boardGamesCtrl.details)
+router.get('/search', boardGamesCtrl.showSearch)

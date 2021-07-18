@@ -4,6 +4,11 @@ import { parseStringPromise } from 'xml2js';
 export {
     topBoardGames,
     details,
+    showSearch,
+}
+
+function showSearch(req, res) {
+    console.log('work!!!!')
 }
 
 function topBoardGames(req, res) {
@@ -25,8 +30,6 @@ function details(req, res) {
     fetch(`https://www.boardgamegeek.com/xmlapi2/thing?type=boardgame&id=${gameId}`)
         .then(response => response.text())
         .then(responsexml => parseStringPromise(responsexml))
-        // .then(json => console.log(json.items.item[0].name))
-        // .then(responseJson => responseJson.items.item[0])
         .then(responseJson => {
             const game = responseJson.items.item?.[0];
             if (game) {
