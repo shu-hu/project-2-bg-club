@@ -1,0 +1,24 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    <h1>My Favorite BoardGames</h1>
+    <table>
+        <tbody>
+            <% favorite.forEach(game => { %>
+                <tr>
+                    <td>
+                        <h2> <%= game.name %></h2>
+                        <img src="<%= game.image %>">
+                        <a href="/boardgames/<%= game.id %>"">Details</a>
+                        <form action="/favorite/<%= game.id %>?_method=DELETE" class="delete-form" method="POST">
+                            <button id="delete-btn" class="fas fa-heart-broken fa-2x" type="submit"></button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</main>
+
+<%- include('../partials/footer') %>

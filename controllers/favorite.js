@@ -4,6 +4,27 @@ import { User } from '../models/user.js'
 
 export {
     create,
+    index,
+    deleteFavorite as delete,
+}
+
+function deleteFavorite(req, res) {
+    User.findById(req.user._id, function(err, user) {
+        user.favorite.remove({_id: req.params.gameId})
+        user.save(function(err) {
+            res.redirect("/favorite")
+        })
+    })
+}
+
+function index(req, res) {
+    User.findById(req.user._id, function(err, user) {
+        res.render('favorite/index', {
+            title: 'My Favorite BoardGames',
+            err: err,
+            favorite: user.favorite,
+        })
+    })
 }
 
 function create(req, res) {
