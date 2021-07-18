@@ -14,6 +14,13 @@ const historySchema = new mongoose.Schema(
   }
 )
 
+const reviewSchema = new Schema({
+  content: String,
+  rating: {type: Number, min: 1, max: 5, default: 5}
+}, {
+  timestamps: true
+})
+
 const favoriteSchema = new mongoose.Schema(
   {
     name: String,
@@ -31,6 +38,7 @@ const userSchema = new mongoose.Schema(
     profile: {type: mongoose.Schema.Types.ObjectId, ref: "Profile"},
     viewsHistory: [historySchema],
     favorite: [favoriteSchema],
+    reviews: [reviewSchema],
   },
   {
     timestamps: true,
