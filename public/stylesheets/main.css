@@ -130,9 +130,11 @@ a {
 .msg-h2 {
     font-size: 60px;
     padding-bottom: 8px;
+    font-family: 'Courgette', cursive;;
 }
 
 .msg-p {
     font-size: 32px;
     padding-bottom: 10px;
+    font-family: 'Righteous', cursive;
 }
