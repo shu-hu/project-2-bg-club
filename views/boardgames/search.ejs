@@ -12,7 +12,7 @@
     </div>
     <section>
         <% if(input) { %> 
-            <% if(searchResult) { %>
+            <% if(searchResult.length) { %>
                 <h3>Search Result</h3>
                 <table>
                     <thead>
@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% searchResult.slice(0, 11).forEach(function(game) { %>
+                        <% searchResult.forEach(function(game) { %>
                         <tr>
                             <td><%= game.name %></td>
                             <td><%= game.gamePublished %></td>

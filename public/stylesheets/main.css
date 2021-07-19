@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+    background-color: white;
+}
+
+div {
+    display: block;
+}
+
+#blue-white {
+    position: fixed;
+    top: 0;
+    left: 50%;
+}
+
+#blue-white .right, #blue-white .left {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#blue-white .left .sqr {
+    position: absolute;
+    top: 0;
+    left: -2256px;
+    height: 900px;
+    background-color: #6DAFFE;
+    width: 2000px;
+}
+
+#blue-white .left .triangle {
+    position: absolute;
+    top: 0;
+    left: -258px;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 900px 520px 0 0;
+    line-height: 0px;
+    border-color: #6DAFFE;
+}
+
+#blue-white .right .sqr {
+    position: absolute;
+    top: 0;
+    left: 260px;
+    height: 900px;
+    background-color: white;
+    width: 2000px;
+}
+
+#blue-white .right .triangle {
+    position: absolute;
+    top: 0;
+    left: -260px;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0 0 900px 520px;
+    line-height: 0px;
+    border-color: transparent transparent white transparent;
+}
+
+#body {
+    opacity: 1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.first .inner {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#first_1 h1 {
+    width: 500px;
+    top: 0;
+    margin-top: 320px;
+    margin-left: 10px;
+    color: black;
+    font-size: 120px;
+}
+
+.abs {
+    position: absolute;
+}
+
+#first_1 #menu {
+    top: 80px;
+    left: 300px;
+    font-size: 18px;
+}
+
+#first_1 #menu a {
+    display: block;
+    border-right: 1px solid black;
+    padding: 5px 20px;
+    float: left;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.left-msg-container {
+    width: 100%;
+    position: relative;
+}
+
+.left-msg {
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#msg-1{
+    width: 400px;
+    margin-top: 180px;
+    margin-left: 750px;
+    padding: 0;
+    color: darkblue;
+}
+
+.msg-h2 {
+    font-size: 60px;
+    padding-bottom: 8px;
+}
+
+.msg-p {
+    font-size: 32px;
+    padding-bottom: 10px;
+}

@@ -1,16 +1,66 @@
-<%- include('./partials/html-head') %>
-<%- include('./partials/nav') %>
 
-<main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img 
-        src="<%= user.profile.avatar %>" 
-        alt="<%= user.profile.name %> avatar"
-      >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/4da7a940f0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="/stylesheets/siwg.css">
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <title>Home Page</title>
+</head>
+<body>
+  <div id="blue-white">
+    <div class="left blue" style="margin-left: 0px;">
+      <div class="sqr"></div>
+      <div class="triangle"></div>
     </div>
-  <% } %>
-</main>
 
-<%- include('./partials/footer') %>
+    <div class="right white" style="margin-left: 0px;">
+      <div class="sqr"></div>
+      <div class="triangle"></div>
+    </div>
+  </div>
+
+  <div id="body" style="top: 0px;">
+    <div class="first" id="first_1">
+      <div class="inner">
+        <h1 class="animate__animated animate__heartBeat animate__delay-1s fas fa-dragon abs"> BG-CLUB</h1>
+        <div id="menu" class="abs">
+          <a href="/boardgames/top" class="go">DISCOVER</a>
+          <a href="/boardgames/search" class="go">SEARCH</a>
+          <a href="/favorite" class="go">FAVORITE</a>
+        </div>
+
+        <div class="left-msg-container">
+          <div class="left-msg" id="msg-1">
+            <% if (user) { %>
+              <h2 class="animate__animated animate__bounce msg-h2">Hello, <%= user.profile.name%></h2>
+              <p class="msg-p">Welcome to bg-club! Let's statrt your own journey now...</p>
+            <% } else { %> 
+              <h2 class="msg-h2">Getting Start!</h2>
+              <p class="msg-p">Log in with your google account and start your boardgame journey...</p>
+            <% } %> 
+            <div id="log-in-icon">
+              <% if (user) { %>
+                <a href="/auth/logout" class="go">
+                  <button type="submit" class="fas fa-sign-out-alt">Logout</button>
+                </a>
+              <% } else { %>
+                <a href="/auth/google" class="siwg-link go">
+                  <button type="submit" class="siwg">
+                    <img id="siwg-image" alt="Sign in with Google" />
+                  </button>
+                </a>
+              <% } %>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
