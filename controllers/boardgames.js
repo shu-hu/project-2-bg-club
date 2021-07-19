@@ -60,7 +60,7 @@ function topBoardGames(req, res) {
         .then(responsexml => parseStringPromise(responsexml))
         .then(responseJson => res.render('boardgames/top', 
             {
-                'user': null,
+                // 'user': null,
                 'title': 'Top', 
                 'games': responseJson.items.item.slice(0, 10)
             }
