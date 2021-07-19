@@ -20,7 +20,7 @@ function deleteFavorite(req, res) {
 function index(req, res) {
     User.findById(req.user._id, function(err, user) {
         res.render('favorite/index', {
-            title: 'My Favorite BoardGames',
+            title: 'Favorite',
             err: err,
             favorite: user.favorite,
         })

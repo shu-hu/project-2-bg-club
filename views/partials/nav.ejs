@@ -5,14 +5,14 @@
 <body>
   <nav>
     <i class="fas fa-dragon">BG-CLUB</i>
-    <a href="/">HOME</a>
-    <a href="/boardgames/top">DISCOVER</a>
-    <a href="/boardgames/search">SEARCH</a>
-    <a href="/favorite">FAVORITE</a>
+    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
+    <a href="/boardgames/top" <%- title === 'Top' ? 'class="active"' : '' %>>DISCOVER</a>
+    <a href="/boardgames/search" <%- title === 'Search' ? 'class="active"' : '' %>>SEARCH</a>
+    <a href="/favorite" <%- title === 'Favorite' ? 'class="active"' : '' %>>FAVORITE</a>
 
     <% if (user) { %>
       <a href="/auth/logout">
-        <button type="submit" class="fas fa-sign-out-alt">Logout</button>
+        <button type="submit" class="fas fa-sign-out-alt">LOGOUT</button>
       </a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">

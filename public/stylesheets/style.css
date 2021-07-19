@@ -34,7 +34,11 @@ body {
 
 body > nav {
   grid-area: nav;
-  background-color: #366bac;
+  /* background-color: #366bac; */
+  background-color: #63a4ff;
+  background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+  /* background-color: #2a2a72;
+  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%); */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -61,7 +65,6 @@ nav > a:visited {
 }
 
 nav > a:hover {
-  color: white;
   background-color: #6DAFFE;
 }
 
@@ -69,6 +72,7 @@ nav > a.active {
   color: #FF6A3D;
   font-weight: bold;
 }
+
 
 .fas {
   /* color: #9DAAF2; */

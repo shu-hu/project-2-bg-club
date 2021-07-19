@@ -45,7 +45,7 @@ async function showSearch(req, res) {
     
     User.findById(req.user._id, function(err, user) {
         res.render('boardgames/search', {
-            title: 'View History',
+            title: 'Search',
             err: err,
             history: user.viewsHistory,   
             searchResult: searchResult,
@@ -60,7 +60,6 @@ function topBoardGames(req, res) {
         .then(responsexml => parseStringPromise(responsexml))
         .then(responseJson => res.render('boardgames/top', 
             {
-                // 'user': null,
                 'title': 'Top', 
                 'games': responseJson.items.item.slice(0, 10)
             }
