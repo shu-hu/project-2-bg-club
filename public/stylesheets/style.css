@@ -103,7 +103,7 @@ body > main {
   font-size: 32px;
 }
 
-#top-game-name {
+.top-game-name {
   font-family: 'Oxygen', sans-serif;
   font-size: 14px;
   text-align: center;
@@ -124,6 +124,15 @@ font-size: 18px;
   margin-top: 25px;
 }
 
+.favorite-cards {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto 1fr auto;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  margin-top: 25px;
+}
+
 .card-body{
   text-align: center;
 }
@@ -136,11 +145,38 @@ font-size: 18px;
   height: 280px;
 }
 
+#fav-img {
+  height: 320px;
+}
 #top-card-btn {
   text-align: center;
   font-size: 14px;
   font-weight: bold;
   border-radius: 50%;
+}
+
+.fav-btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.fav-card-btn {
+  height: fit-content;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.fav-delete-btn-form {
+  margin-bottom: 0;
+}
+
+.fav-delete-btn {
+  border: none;
+  background-color: white;
+  color: red;
 }
 
 .description-newline {
