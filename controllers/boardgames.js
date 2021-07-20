@@ -61,7 +61,7 @@ function topBoardGames(req, res) {
         .then(responseJson => res.render('boardgames/top', 
             {
                 'title': 'Top', 
-                'games': responseJson.items.item.slice(0, 10)
+                'games': responseJson.items.item.slice(0, 20)
             }
         ))
 }

@@ -55,7 +55,7 @@
             </tr>
         </thead>
         <tbody>
-            <% history.forEach(function(viewed) { %>
+            <% history.slice(history.length - 10, history.length).forEach(function(viewed) { %>
             <tr>
                 <td><%= viewed.name %></td>
                 <td><img src="<%= viewed.image %>"></td>

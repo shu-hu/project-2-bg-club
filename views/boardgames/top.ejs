@@ -1,21 +1,25 @@
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Oxygen:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
 <main>
-    <h1>Top 10 BoardGames</h1>
-    <table>
-        <tbody>
-            <% games.forEach((game, idx) => { %>
-                <tr>
-                    <td>
-                        <h2> <%= idx + 1 %> : <%= game.name[0].$.value %></h2>
-                        <img src="<%= game.thumbnail[0].$.value %>">
-                        <a href="/boardgames/<%= game.$.id %>"">Details</a>
-                    </td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
+    <h1 id="top-head">Top 20 BoardGames</h1>
+    <div class="top-cards">
+        <% games.forEach((game, idx) => { %>
+            <div class="card" style="width: 24rem;">
+                <img src="<%= game.thumbnail[0].$.value %>" class="card-img-top" id="top-img">
+                <div class="card-body">
+                    <h5 class="card-title" id="top-rank"> <%= idx + 1 %> </h5>
+                    <p class="card-text" id="top-game-name"><%= game.name[0].$.value %></p>
+                    <a href="/boardgames/<%= game.$.id %>" class="btn btn-primary" id="top-card-btn">DETAILS</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
 </main>
 
 <%- include('../partials/footer') %>
