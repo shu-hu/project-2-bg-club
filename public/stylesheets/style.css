@@ -139,6 +139,7 @@ font-size: 18px;
 
 .card {
   box-shadow: 10px 10px 10px #9ac3fd;
+  border: none;
 }
 
 #top-img {
@@ -224,4 +225,27 @@ font-size: 18px;
 
 .search-container button:hover {
   background: rgb(108, 218, 238);
+}
+
+.detail-img {
+  height: 600px;
+}
+
+.detail-description {
+  max-height: 400px;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+.detail-title {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#add-fav-btn {
+  border: none;
+  background-color: white;
+  color: red;
+  float: right;
+  padding-right: 20px;
 }

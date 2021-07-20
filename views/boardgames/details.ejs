@@ -1,27 +1,38 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
 <main>
-    <h1> <%= name %> </h1>
-    <form action="/favorite" method="POST">
-        <input id="fav-gameId" name="gameId" type="number" hidden value="<%= id %>">
-        <input id="fav-gameName" name="gameName" type="text" hidden value="<%= name %>">
-        <input id="fav-gameImg" name="gameImg" type="text" hidden value="<%= image %>">
-        <button type="submit"><i class="fas fa-heart fa-2x"></i></button>
-    </form>
-    <p>Published In : <%= yearpublished %> </p>
-    <p> Designers: 
-        <% designers.forEach(designer => { %>
-            <span><%= designer.$.value %>, </span>
-        <% }); %> 
-    </p>
-    <p> Categories: 
-        <% categories.forEach(category => { %>
-            <span>#<%= category.$.value %> </span>
-        <% }); %> 
-    </p>
-    <img class="game-img" src=" <%= image %> ">
-    <p class='description-newline'><%= description %> </p>
+    <div class="card mb-3" style="max-width: 80%;">
+        <div class="row g-0" id="detail-card">
+            <div class="col-md-4">
+                <img src=" <%= image %> " class="img-fluid rounded-start detail-img">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title detail-title"><%= name %></h5>
+                    <p class="card-text"><small class="text-muted">Published In : <%= yearpublished %> </small></p>
+                    <p class="card-text"><small class="text-muted">Designers: 
+                        <% designers.forEach(designer => { %>
+                            <span><%= designer.$.value %>, </span>
+                        <% }); %> 
+                    </small></p>
+                    <p class="card-text"><small class="text-muted"> Categories: 
+                        <% categories.forEach(category => { %>
+                            <span>#<%= category.$.value %> </span>
+                        <% }); %> 
+                    </small></p>
+                    <p class="card-text detail-description description-newline"><%= description %></p>
+                    <form action="/favorite" method="POST">
+                        <input id="fav-gameId" name="gameId" type="number" hidden value="<%= id %>">
+                        <input id="fav-gameName" name="gameName" type="text" hidden value="<%= name %>">
+                        <input id="fav-gameImg" name="gameImg" type="text" hidden value="<%= image %>">
+                        <button type="submit" id="add-fav-btn"><i class="fas fa-heart fa-2x"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <h2>Reviews</h2>
     <form 
@@ -41,7 +52,7 @@
         </select>
         <input type="number" hidden name="gameId" value="<%= id %>">
         <input type="text" name="user" hidden value="<%= user %>">
-        <button type="submit">Add Review</button>
+        <button type="submit">Save</button>
     </form>
     <% if (reviews.length) { %>
         <table>
