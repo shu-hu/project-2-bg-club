@@ -1,4 +1,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
@@ -13,61 +24,69 @@
     <section>
         <% if(input) { %> 
             <% if(searchResult.length) { %>
-                <h3>Search Result</h3>
+                <h3 class="search-title">Search Result</h3>
+                <div class="search-table">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Published Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% searchResult.forEach(function(game) { %>
+                            <tr>
+                                <td><%= game.name %></td>
+                                <td><%= game.gamePublished %></td>
+                                <% if (game.gameId) { %> 
+                                    <td><a href="/boardgames/<%= game.gameId %>" class="detail-link">DETAILS</a></td>
+                                <% } %> 
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <div class="no-result">
+                    <p class="your-search">Your search - <strong><%= input %></strong>  - did not match any documents.</p>
+                    <ul class="sug-text">Suggestions:
+                        <li>Make sure all words are spelled correctly.</li>
+                        <li>Try different keywords.</li>
+                        <li>Try more general keywords.</li>
+                    </ul>
+                </div>
+            <% } %>
+        <% } %>   
+    </section>
+
+    <div class="container history-box">
+        <h2 class="search-title">Viewing History</h2>
+        <button type="button" class="btn btn-primary history-btn-view" data-toggle="collapse" data-target="#demo">Click here to view</button>
+        <div id="demo" class="collapse">
+            <% if (history?.length) { %>
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Image</th>
                             <th>Name</th>
-                            <th>Published Year</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% searchResult.forEach(function(game) { %>
+                        <% history.slice(history.length - 10, history.length).forEach(function(viewed) { %>
                         <tr>
-                            <td><%= game.name %></td>
-                            <td><%= game.gamePublished %></td>
-                            <% if (game.gameId) { %> 
-                                <td><a href="/boardgames/<%= game.gameId %>">DETAILS</a></td>
-                            <% } %> 
+                            <td><img class="img-thumbnail history-img" src="<%= viewed.image %>"></td>
+                            <td><%= viewed.name %></td>
+                            <td><%= viewed.createdAt.toLocaleString() %></td>
                         </tr>
                         <% }) %>
                     </tbody>
                 </table>
             <% } else { %>
-                <h3>Your search - <%= input %>  - did not match any documents.</h3>
-                <ul>
-                    Suggestions:
-                    <li>Make sure all words are spelled correctly.</li>
-                    <li>Try different keywords.</li>
-                    <li>Try more general keywords.</li>
-                </ul>
+                <h3>Your have not viewed any boardGame yet</h3>
             <% } %>
-        <% } %>   
-    </section>
-    <h2>Viewing History</h2>
-    <% if (history?.length) { %>
-        <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% history.slice(history.length - 10, history.length).forEach(function(viewed) { %>
-            <tr>
-                <td><%= viewed.name %></td>
-                <td><img src="<%= viewed.image %>"></td>
-                <td><%= viewed.createdAt.toLocaleString() %></td>
-            </tr>
-            <% }) %>
-        </tbody>
-        </table>
-    <% } else { %>
-        <h3>Your have not viewed any boardGame yet</h3>
-    <% } %>
-
+        </div>
+    </div>
 </main>
 
 <%- include('../partials/footer') %>
