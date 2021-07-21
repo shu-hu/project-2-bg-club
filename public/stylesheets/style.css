@@ -246,6 +246,101 @@ font-size: 18px;
   border: none;
   background-color: white;
   color: red;
-  float: right;
+  position: absolute;
+  right:    0;
+  bottom:   0;
   padding-right: 20px;
+  padding-bottom: 15px;
+}
+
+.review-container {
+  border: 1px solid rgb(229, 239, 250);
+  background-color: rgb(235, 241, 247);
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 80%;
+  height: 250px;
+}
+
+.detail-review-title{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 24px;
+}
+
+#content-textarea {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.rating-save {
+  margin-top: 10px;
+  padding: 10px 10px 0 50px;
+}
+
+
+#review-btn {
+  float: right;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(18, 199, 18);
+}
+
+#review-btn:hover {
+  color: black;
+  background-color:#63a4ff;
+  font-weight: bold;
+}
+
+#rating-label {
+  font-family: 'Concert One', cursive;
+  color: #DF4C73;
+  font-size: 22px;
+}
+
+.review-table {
+  max-width: 80%;
+  border: 1px solid lightblue;
+  margin-bottom: 10px;
+  color: #757575;
+}
+
+.rating-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+
+.rating-cont .rating-star input {
+  display: none;
+}
+
+.rating-cont label {
+  color: #444;
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
+}
+
+.rate-input:not(:checked) ~ .rate-label:hover,
+.rate-input:not(:checked) ~ .rate-label:hover ~ .rate-label{
+  color: #fd4;
+}
+
+.rate-input:checked ~ .rate-label{
+  color: #fd4;
+}
+
+input#rate-5:checked ~ .rate-label{
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
 }

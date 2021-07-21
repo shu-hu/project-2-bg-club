@@ -1,4 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
@@ -34,56 +37,68 @@
         </div>
     </div>
 
-    <h2>Reviews</h2>
-    <form 
-        id="add-review-form"
-        action="/boardgames/<%= id %>/reviews"
-        method="POST"
-    >
-        <label for="content-textarea">Review:</label>
-        <textarea name="content" id="content-textarea"></textarea>
-        <label for="rating-select">Rating:</label>
-        <select name="rating" id="rating-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
-        </select>
-        <input type="number" hidden name="gameId" value="<%= id %>">
-        <input type="text" name="user" hidden value="<%= user %>">
-        <button type="submit">Save</button>
-    </form>
-    <% if (reviews.length) { %>
-        <table>
-        <thead>
-            <tr>
-            <th>Date</th>
-            <th>Review</th>
-            <th>Rating</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% let total = 0 %>
-            <% reviews.forEach(function(review) { %>
-                <% total += review.rating %>
-            <tr>
-                <td><%= review.createdAt.toLocaleDateString() %></td>
-                <td><%= review.content %></td>
-                <td><%= review.rating %></td>
-            </tr>
-            <% }) %>
-            <tr>
-                <td colspan="2"></td>
-                <td>
-                    <strong><%= (total / reviews.length).toFixed(1) %></strong>
-                </td>
-            </tr>
-        </tbody>
-        </table>
-    <% } else { %>
-        <h3>No Reviews Yet</h3>
-    <% } %>
+    <section class="review-container">
+        <h2 class="detail-review-title">REVIEWS</h2>
+        <form 
+            id="add-review-form"
+            action="/boardgames/<%= id %>/reviews"
+            method="POST"
+        >
+            <label for="content-textarea"></label>
+            <textarea name="content" id="content-textarea" placeholder="Enter your review here..."></textarea>
+            <div class="rating-save">
+                <!-- <label for="rating-select" id="rating-label">Rating:</label>
+                <select name="rating" id="rating-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                </select> -->
+                <div class="rating-cont">
+                    <div class="rating-star">
+                        <input type="radio" name="rating" id="rate-5" value="5" class="rate-input">
+                        <label for="rate-5" class="fas fa-star rate-label"></label>
+                        <input type="radio" name="rating" id="rate-4" value="4" class="rate-input">
+                        <label for="rate-4" class="fas fa-star rate-label"></label>
+                        <input type="radio" name="rating" id="rate-3" value="3" class="rate-input">
+                        <label for="rate-3" class="fas fa-star rate-label"></label>
+                        <input type="radio" name="rating" id="rate-2" value="2" class="rate-input">
+                        <label for="rate-2" class="fas fa-star rate-label"></label>
+                        <input type="radio" name="rating" id="rate-2" value="1" class="rate-input">
+                        <label for="rate-2" class="fas fa-star rate-label"></label>
+                    </div>
+                </div>
+                <input type="number" hidden name="gameId" value="<%= id %>">
+                <input type="text" name="user" hidden value="<%= user %>">
+                <button type="submit" id="review-btn">Save</button>
+            </div>
+        </form>
+    </section>
+        <% if (reviews.length) { %>
+            <table class="table review-table">
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Date</th>
+                        <th>Review</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let total = 0 %>
+                    <% reviews.forEach(function(review) { %>
+                        <% total += review.rating %>
+                    <tr>
+                        <td><%= review.rating %></td>
+                        <td><%= review.createdAt.toLocaleString() %></td>
+                        <td><%= review.content %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <h3>No Reviews Yet</h3>
+        <% } %>
 </main>
 
 <%- include('../partials/footer') %>
