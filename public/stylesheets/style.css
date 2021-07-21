@@ -333,14 +333,14 @@ font-size: 18px;
 
 .rate-input:not(:checked) ~ .rate-label:hover,
 .rate-input:not(:checked) ~ .rate-label:hover ~ .rate-label{
-  color: #fd4;
+  color: #FFA000;
 }
 
 .rate-input:checked ~ .rate-label{
-  color: #fd4;
+  color: #FFA000;
 }
 
 input#rate-5:checked ~ .rate-label{
-  color: #fe7;
+  color: #FFA000;
   text-shadow: 0 0 20px #952;
 }
