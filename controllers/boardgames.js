@@ -70,7 +70,7 @@ function convertStr(input) {
     if (typeof input !== 'string') {
         return input;
     } 
-    return input.replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll('&quot;', '\'');
+    return input.replace(/&#10;/g, '\n').replace(/&mdash;/g, '-').replace(/&quot;/g, '\'');
 }
 
 function details(req, res) {
@@ -92,12 +92,6 @@ function details(req, res) {
                         gameId: gameId,
                     }
                     user.viewsHistory.push(viewHistory)
-
-
-                    console.log(game)
-                    console.log(game.description?.[0])
-                    console.log(`This is test:  ${convertStr(game.description?.[0])}`)
-
                     user.save(function(err) {
                         res.render(`boardgames/details`, 
                             {
