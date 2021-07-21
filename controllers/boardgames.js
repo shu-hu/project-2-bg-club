@@ -85,6 +85,12 @@ function details(req, res) {
                         gameId: gameId,
                     }
                     user.viewsHistory.push(viewHistory)
+
+
+                    console.log(game)
+                    console.log(game.description?.[0])
+                    console.log(`This is test:  ${game.description?.[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'")}`)
+
                     user.save(function(err) {
                         res.render(`boardgames/details`, 
                             {
@@ -93,7 +99,7 @@ function details(req, res) {
                                 'id': gameId, 
                                 'name': gameName,
                                 'image' : gameImg,
-                                'description' : game.description?.[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),
+                                'description' : game.description?.[0],
                                 'yearpublished' : game.yearpublished[0].$.value,
                                 'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
                                 'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
