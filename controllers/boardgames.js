@@ -66,6 +66,13 @@ function topBoardGames(req, res) {
         ))
 }
 
+function convertStr(input) {
+    if (typeof input !== 'string') {
+        return input;
+    } 
+    return input.replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll('&quot;', '\'');
+}
+
 function details(req, res) {
     const gameId = req.params.id;
     fetch(`https://www.boardgamegeek.com/xmlapi2/thing?type=boardgame&id=${gameId}`)
@@ -89,7 +96,7 @@ function details(req, res) {
 
                     console.log(game)
                     console.log(game.description?.[0])
-                    console.log(`This is test:  ${game.description?.[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'")}`)
+                    console.log(`This is test:  ${convertStr(game.description?.[0])}`)
 
                     user.save(function(err) {
                         res.render(`boardgames/details`, 
@@ -99,7 +106,7 @@ function details(req, res) {
                                 'id': gameId, 
                                 'name': gameName,
                                 'image' : gameImg,
-                                'description' : game.description?.[0],
+                                'description' : convertStr(game.description?.[0]),
                                 'yearpublished' : game.yearpublished[0].$.value,
                                 'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
                                 'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
