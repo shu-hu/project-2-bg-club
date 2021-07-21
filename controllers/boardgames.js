@@ -93,7 +93,7 @@ function details(req, res) {
                                 'id': gameId, 
                                 'name': gameName,
                                 'image' : gameImg,
-                                'description' : game.description[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),
+                                'description' : game.description?.[0].replaceAll('&#10;', '\n').replaceAll('&mdash;', '-').replaceAll("&quot;", "'"),
                                 'yearpublished' : game.yearpublished[0].$.value,
                                 'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
                                 'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
