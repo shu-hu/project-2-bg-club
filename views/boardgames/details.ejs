@@ -89,7 +89,7 @@
                     <% reviews.forEach(function(review) { %>
                         <% total += review.rating %>
                     <tr>
-                        <td><%= review.rating %></td>
+                        <td><strong><%= review.rating %></strong></td>
                         <td><%= review.createdAt.toLocaleString() %></td>
                         <td><%= review.content %></td>
                     </tr>
