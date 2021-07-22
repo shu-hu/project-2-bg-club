@@ -98,12 +98,6 @@ body > main {
   font-size: 32px;
 }
 
-.top-game-name {
-  font-family: 'Oxygen', sans-serif;
-  font-size: 14px;
-  text-align: center;
-}
-
 #top-rank {
   text-align: center;
 font-size: 18px;
@@ -141,14 +135,28 @@ font-size: 18px;
   height: 280px;
 }
 
+#top-card-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-game-name {
+  flex-grow: 1;
+  font-family: 'Oxygen', sans-serif;
+  text-align: center;
+}
+
 #fav-img {
   height: 320px;
 }
+
 #top-card-btn {
   text-align: center;
   font-size: 14px;
   font-weight: bold;
   border-radius: 50%;
+  width: fit-content;
+  align-self: center;
 }
 
 .fav-btns {

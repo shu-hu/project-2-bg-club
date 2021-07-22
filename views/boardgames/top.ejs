@@ -12,9 +12,9 @@
         <% games.forEach((game, idx) => { %>
             <div class="card" style="width: 24rem;">
                 <img src="<%= game.thumbnail[0].$.value %>" class="card-img-top top-img">
-                <div class="card-body">
+                <div class="card-body" id="top-card-box">
                     <h5 class="card-title" id="top-rank"> <%= idx + 1 %> </h5>
-                    <p class="card-text" id="top-game-name"><%= game.name[0].$.value %></p>
+                    <p class="card-text top-game-name"><%= game.name[0].$.value %></p>
                     <a href="/boardgames/<%= game.$.id %>" class="btn btn-primary" id="top-card-btn">DETAILS</a>
                 </div>
             </div>
