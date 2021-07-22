@@ -135,12 +135,12 @@ font-size: 18px;
   height: 280px;
 }
 
-#top-card-box {
+.top-fav-card-box {
   display: flex;
   flex-direction: column;
 }
 
-.top-game-name {
+.top-fav-game-name {
   flex-grow: 1;
   font-family: 'Oxygen', sans-serif;
   text-align: center;
@@ -150,7 +150,7 @@ font-size: 18px;
   height: 320px;
 }
 
-#top-card-btn {
+.top-fav-card-btn {
   text-align: center;
   font-size: 14px;
   font-weight: bold;

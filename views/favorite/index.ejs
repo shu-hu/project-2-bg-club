@@ -11,8 +11,8 @@
         <% favorite.forEach(game => { %>
             <div class="card" style="width: 32rem;">
                 <img src="<%= game.image %>" class="card-img-top" id="fav-img">
-                <div class="card-body">
-                    <p class="card-text top-game-name"><%= game.name %></p>
+                <div class="card-body top-fav-card-box">
+                    <p class="card-text top-fav-game-name"><%= game.name %></p>
                     <div class="fav-btns">
                         <a href="/boardgames/<%= game.gameId %>" class="btn btn-primary fav-card-btn" id="fav-card-btn">DETAILS</a>
                         <form class="fav-delete-btn-form" action="/favorite/<%= game.id %>?_method=DELETE" class="delete-form" method="POST">
