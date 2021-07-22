@@ -1,4 +1,4 @@
-![alt text](https://i.imgur.com/1x6coe7.png)
+# ![alt text](https://i.imgur.com/1x6coe7.png)
 BG-Club is a MEN Stack CRUD application built on the BoardGameGeek API.
 #### Created by [Shu](https://www.linkedin.com/in/shunuanhu/)
 
@@ -16,7 +16,7 @@ Here you can:
 and many more to come.
 
 ## Getting Started
-[You can here to start!](https://shu-bg-club.herokuapp.com/)
+[You can click here to start!](https://shu-bg-club.herokuapp.com/)
 
 ## Initial Design
 | Wirefame | ERD |
@@ -44,5 +44,5 @@ and many more to come.
 
 ## Next Steps
 - show more info for details page
-- update the viewing history
+- browse board game by category
 - able to delete your review
