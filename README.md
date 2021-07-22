@@ -1,4 +1,5 @@
-## BG-Club
+![alt text](https://i.imgur.com/1x6coe7.png)
+BG-Club is a MEN Stack CRUD application built on the BoardGameGeek API.
 #### Created by [Shu](https://www.linkedin.com/in/shunuanhu/)
 
 ## Description
@@ -17,11 +18,15 @@ and many more to come.
 ## Getting Started
 [You can here to start!](https://shu-bg-club.herokuapp.com/)
 
-## Screenshots
-| Home Page | Discover Page |
+## Initial Design
+| Wirefame | ERD |
 | ------------------------ | ----------------------- |
-| ![alt text](https://i.imgur.com/MWllLgH.png) |  ![alt text](https://i.imgur.com/o26od7n.png) |
+| ![alt text](https://i.imgur.com/lSk7DfD.png) |  ![alt text](https://i.imgur.com/1kyo3bm.png) |
 
+## Screenshots
+| Search Page | Discover Page |
+| ------------------------ | ----------------------- |
+| ![alt text](https://i.imgur.com/ENNE3lb.png) |  ![alt text](https://i.imgur.com/o26od7n.png) |
 
 ## Technologies Used
 - JavaScript
@@ -30,7 +35,7 @@ and many more to come.
 - MongoDB
 - EJS
 - Mongoose
-- GOOGLE OUATH
+- Google OAuth
 - [BGG API](https://boardgamegeek.com/wiki/page/BGG_XML_API2)
 - Bootstrap
 - Font-Awesome
