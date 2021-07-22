@@ -8,7 +8,7 @@ const historySchema = new mongoose.Schema(
   {
     name: String,
     image: String,
-    gameId: {type: Number, unique: true},
+    gameId: Number,
   },{
     timestamps: true,
   }
@@ -18,7 +18,7 @@ const favoriteSchema = new mongoose.Schema(
   {
     name: String,
     image: String,
-    gameId: {type: Number, unique: true},
+    gameId: Number,
   },{
     timestamps: true,
   }

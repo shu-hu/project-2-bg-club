@@ -137,7 +137,7 @@ font-size: 18px;
   border: none;
 }
 
-#top-img {
+.top-img {
   height: 280px;
 }
 
@@ -185,8 +185,14 @@ font-size: 18px;
   object-fit: scale-down;
 }
 
+.detail-img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .detail-img {
-  height: 600px;
+  max-height: 600px;
 }
 
 .detail-description {
