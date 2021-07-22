@@ -76,7 +76,7 @@
                         <% history.slice(history.length - 10, history.length).reverse().forEach(function(viewed) { %>
                         <tr>
                             <td><img class="img-thumbnail history-img" src="<%= viewed.image %>"></td>
-                            <td><%= viewed.name %></td>
+                            <td><a href="/boardgames/<%= viewed.gameId %>"><%= viewed.name %></a></td>
                             <td><%= viewed.createdAt.toLocaleString() %></td>
                         </tr>
                         <% }) %>
