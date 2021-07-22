@@ -81,6 +81,8 @@
             <table class="table review-table">
                 <thead>
                     <tr>
+                        <th></th>
+                        <th>Name</th>
                         <th>Rating</th>
                         <th>Date</th>
                         <th>Review</th>
@@ -91,9 +93,11 @@
                     <% reviews.forEach(function(review) { %>
                         <% total += review.rating %>
                     <tr>
-                        <td><strong><%= review.rating %></strong></td>
-                        <td><%= review.createdAt.toLocaleString() %></td>
-                        <td><%= review.content %></td>
+                        <td class="review-info"><img id="user-pic" src="<%= review.user.profile.avatar %>"></img></td>
+                        <td class="review-info"><%= review.user.profile.name %> </td>
+                        <td class="review-info"><strong><%= review.rating %></strong></td>
+                        <td class="review-info"><%= review.createdAt.toLocaleString() %></td>
+                        <td class="review-info"><%= review.content %></td>
                     </tr>
                     <% }) %>
                 </tbody>

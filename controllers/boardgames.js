@@ -81,7 +81,10 @@ function details(req, res) {
         .then(async function(responseJson) {
             const game = responseJson.items.item?.[0];
             if (game) {
-                const reviews = await Reviews.find({gameId: gameId}).exec()
+                const reviews = await Reviews.find({gameId: gameId}).populate({
+                    path: 'user',
+                    populate: {path: 'profile'},
+                }).exec()
                 User.findById(req.user._id, function(err, user) {
                     const favoriteEntry = user.favorite.find(game => game.gameId == gameId);
                     const gameName = game.name[0].$.value;

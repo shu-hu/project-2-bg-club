@@ -233,8 +233,11 @@ font-size: 18px;
   padding-top: 10px;
 }
 
-
-
+#user-pic {
+  width: 50px;
+  border-radius: 50%;
+  border: 1px dashed blue;
+}
 
 .review-container {
   border: 1px solid rgb(229, 239, 250);
@@ -293,6 +296,10 @@ font-size: 18px;
   border: 1px solid lightblue;
   margin-bottom: 10px;
   color: #757575;
+}
+
+.review-info {
+  vertical-align: bottom;
 }
 
 .rating-cont {
