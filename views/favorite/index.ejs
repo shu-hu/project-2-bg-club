@@ -6,7 +6,7 @@
 <%- include('../partials/nav') %>
 
 <main>
-    <h1 id="top-head">My Favorite BoardGames</h1>
+    <h1 id="top-head">My Favorite Board Games</h1>
     <div class="favorite-cards">
         <% favorite.forEach(game => { %>
             <div class="card" style="width: 32rem;">
@@ -16,6 +16,7 @@
                     <div class="fav-btns">
                         <a href="/boardgames/<%= game.gameId %>" class="btn btn-primary fav-card-btn" id="fav-card-btn">DETAILS</a>
                         <form class="fav-delete-btn-form" action="/favorite/<%= game.id %>?_method=DELETE" class="delete-form" method="POST">
+                            <input name="next" value="/favorite" hidden>
                             <button class="fas fa-heart-broken fa-2x fav-delete-btn" type="submit"></button>
                         </form>
                     </div>

@@ -13,6 +13,21 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
+                    <% if (!favoriteEntry) { %> 
+                        <form action="/favorite" method="POST">
+                            <input id="fav-gameId" name="gameId" type="number" hidden value="<%= id %>">
+                            <input id="fav-gameName" name="gameName" type="text" hidden value="<%= name %>">
+                            <input id="fav-gameImg" name="gameImg" type="text" hidden value="<%= image %>">
+                            <button type="submit" class="add-fav-btn"><i class="fas fa-heart fa-2x"></i></button>
+                        </form>
+                    <% } else { %>
+                        <form class="fav-delete-btn-form" action="/favorite/<%= favoriteEntry._id %>?_method=DELETE" class="delete-form" method="POST">
+                            <input name="next" value="/boardgames/<%= id %>" hidden>
+                            <input id="fav-gameName" name="gameName" type="text" hidden value="<%= name %>">
+                            <input id="fav-gameImg" name="gameImg" type="text" hidden value="<%= image %>">
+                            <button type="submit" class="remove-fav-btn"><i class="fas fa-heart fa-2x"></i></button>
+                        </form>
+                    <% } %> 
                     <h5 class="card-title detail-title"><%= name %></h5>
                     <p class="card-text"><small class="text-muted">Published In : <%= yearpublished %> </small></p>
                     <p class="card-text"><small class="text-muted">Designers: 
@@ -26,12 +41,7 @@
                         <% }); %> 
                     </small></p>
                     <p class="card-text detail-description description-newline"><%= description %></p>
-                    <form action="/favorite" method="POST">
-                        <input id="fav-gameId" name="gameId" type="number" hidden value="<%= id %>">
-                        <input id="fav-gameName" name="gameName" type="text" hidden value="<%= name %>">
-                        <input id="fav-gameImg" name="gameImg" type="text" hidden value="<%= image %>">
-                        <button type="submit" id="add-fav-btn"><i class="fas fa-heart fa-2x"></i></button>
-                    </form>
+
                 </div>
             </div>
         </div>

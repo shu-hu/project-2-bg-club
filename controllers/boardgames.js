@@ -83,6 +83,7 @@ function details(req, res) {
             if (game) {
                 const reviews = await Reviews.find({gameId: gameId}).exec()
                 User.findById(req.user._id, function(err, user) {
+                    const favoriteEntry = user.favorite.find(game => game.gameId == gameId);
                     const gameName = game.name[0].$.value;
                     const gameThumbnail = game.thumbnail[0];
                     const gameImg = game.image[0];
@@ -105,6 +106,7 @@ function details(req, res) {
                                 'designers' : game.link.filter(l => l.$.type === 'boardgamedesigner'),
                                 'categories' : game.link.filter(l => l.$.type === 'boardgamecategory'),
                                 'reviews' : reviews,
+                                'favoriteEntry' : favoriteEntry,
                             }
                         )
                     })
